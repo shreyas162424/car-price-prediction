@@ -2,7 +2,7 @@
 
 This is a machine learning-based web application that predicts the selling price of a car based on various features such as manufacturing year, showroom price, kilometers driven, fuel type, and more. The app uses a Random Forest Regression model to make predictions.
 
-![Car Price Prediction Banner](static/images/downlaod.jpeg)
+
 
 ## 🔧 Project Structure
 
@@ -107,7 +107,6 @@ The dataset (`car data (1).csv`) includes fields like:
 ## ✍️ Author
 
 **Shreyas Sangalad**  
-Connect on [LinkedIn](#) | [GitHub](#) | [Portfolio](#)
 
 ---
 
