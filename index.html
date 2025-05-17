@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Car Price Predictor</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url('{{ url_for('static', filename='images/downlaod.jpeg') }}') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      background-color: rgba(255, 255, 255, 0.08);
+      padding: 40px;
+      border-radius: 16px;
+      max-width: 500px;
+      width: 100%;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 24px;
+      font-size: 28px;
+      color: #00ffff;
+    }
+
+    label {
+      font-weight: 600;
+      margin-top: 16px;
+      display: block;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      margin-bottom: 16px;
+      border-radius: 8px;
+      border: none;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #00cccc;
+      color: white;
+      border: none;
+      font-size: 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0099aa;
+    }
+
+    .result {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #00ffcc;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Car Price Prediction</h1>
+    <form action="{{ url_for('predict') }}" method="post">
+      <label for="Year">Year of Purchase</label>
+      <input type="number" name="Year" required>
+
+      <label for="Present_Price">Showroom Price (in Lakhs)</label>
+      <input type="text" name="Present_Price" required>
+
+      <label for="Kms_Driven">Kilometers Driven</label>
+      <input type="number" name="Kms_Driven" required>
+
+      <label for="Owner">Number of Previous Owners</label>
+      <input type="number" name="Owner" required>
+
+      <label for="Fuel_Type_Petrol">Fuel Type</label>
+      <select name="Fuel_Type_Petrol" required>
+        <option value="Petrol">Petrol</option>
+        <option value="Diesel">Diesel</option>
+        <option value="CNG">CNG</option>
+      </select>
+
+      <label for="Seller_Type_Individual">Seller Type</label>
+      <select name="Seller_Type_Individual" required>
+        <option value="Dealer">Dealer</option>
+        <option value="Individual">Individual</option>
+      </select>
+
+      <label for="Transmission_Mannual">Transmission Type</label>
+      <select name="Transmission_Mannual" required>
+        <option value="Mannual">Manual</option>
+        <option value="Automatic">Automatic</option>
+      </select>
+
+      <button type="submit">Predict Price</button>
+    </form>
+
+    {% if prediction_text %}
+    <div class="result">
+      {{ prediction_text }}
+    </div>
+    {% endif %}
+  </div>
+</body>
+
+</html>
